@@ -1,0 +1,1 @@
+{"num_cols": ["amount", "customer_age", "minute_of_day", "to_acc_volume", "session_duration"], "all_cols": ["amount", "customer_age", "minute_of_day", "to_acc_volume", "session_duration", "hour_of_day", "day_of_week"]}
