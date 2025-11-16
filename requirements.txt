@@ -3,3 +3,11 @@ scikit-learn
 pandas
 numpy
 joblib
+seaborn
+matplotlib
+catboost
+xgboost
+Flask
+dill
+
+#-e .
