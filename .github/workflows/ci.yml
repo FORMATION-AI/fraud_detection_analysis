@@ -3,7 +3,7 @@ name: Fraud Detection CI
 on:
   push:
     branches:
-      - master
+      - feature/streamlit-cleanup
   pull_request:
     branches:
       - master
