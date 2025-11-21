@@ -203,3 +203,24 @@ Streamlit will open at `http://localhost:8501`; enter values in the form to see 
 
 **Questions or contributions?**  
 Open an issue / PR or reach out to maintainers. Happy experimenting with fraud analytics! 😊
+
+## Deployment (Docker + ECR + self-hosted runner)
+
+- GitHub Actions builds and pushes the image to ECR on branch pushes (`.github/workflows/deploy.yml`).
+- The EC2 self-hosted runner pulls the SHA-tagged image from ECR and runs it on port 8080 (host and container).
+- Security group must allow inbound TCP 8080; access the app at `http://<ec2-public-ip>:8080`.
+
+Manual deploy on the EC2 host (if needed):
+```bash
+IMAGE_URI=<account>.dkr.ecr.<region>.amazonaws.com/<repository>
+docker pull ${IMAGE_URI}:latest
+docker stop fraud-app || true
+docker rm fraud-app || true
+docker run -d --name fraud-app -p 8080:8080 --restart unless-stopped ${IMAGE_URI}:latest
+```
+
+Local build (example):
+```bash
+docker build -t fraud-app:dev .
+docker run -p 8080:8080 fraud-app:dev
+```
