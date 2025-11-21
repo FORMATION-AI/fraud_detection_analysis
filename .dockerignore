@@ -1,0 +1,14 @@
+.git
+.venv
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.ipynb_checkpoints/
+logs/
+notebook/
+images/
+user_logs.csv
+
+# Optional: exclude local artifacts generated during experiments
+artifacts/*.log
