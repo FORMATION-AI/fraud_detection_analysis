@@ -1,4 +1,4 @@
-﻿name: Fraud Detection CI
+name: Fraud Detection CI
 
 on:
   push:
