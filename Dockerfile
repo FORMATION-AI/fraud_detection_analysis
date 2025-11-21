@@ -20,8 +20,8 @@ RUN pip install --no-cache-dir --upgrade pip \
 # Copy the rest of the application (includes artifacts and templates)
 COPY . .
 
-# Expose the Flask port
-EXPOSE 5000
+# Expose the service port
+EXPOSE 8080
 
-# Start the Flask app with Gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "main:app"]
+# Start the Flask app with Gunicorn on port 8080
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "main:app"]

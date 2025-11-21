@@ -9,7 +9,8 @@ on:
 env:
   AWS_REGION: ${{ secrets.AWS_REGION }}
   ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY_NAME }} # repo name only
-  CONTAINER_PORT: 5000
+  CONTAINER_PORT: 8080
+  HOST_PORT: 8080
   SERVICE_NAME: fraud-app
 
 permissions:
@@ -77,4 +78,4 @@ jobs:
           docker pull "$IMAGE_URI:$IMAGE_TAG" || exit 1
           docker stop "$SERVICE_NAME" || true
           docker rm "$SERVICE_NAME" || true
-          docker run -d --name "$SERVICE_NAME" -p 80:$CONTAINER_PORT --restart unless-stopped "$IMAGE_URI:$IMAGE_TAG"
+          docker run -d --name "$SERVICE_NAME" -p $HOST_PORT:$CONTAINER_PORT --restart unless-stopped "$IMAGE_URI:$IMAGE_TAG"
