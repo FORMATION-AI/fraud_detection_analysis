@@ -1,4 +1,4 @@
-name: Fraud Detection CI
+﻿name: Fraud Detection CI
 
 on:
   push:
@@ -24,9 +24,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-
-      - name: Placeholder lint step
-        run: echo "TODO: add linting (ruff/flake8)."
 
       - name: Placeholder tests step
         run: echo "TODO: add test execution (pytest)."
