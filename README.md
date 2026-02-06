@@ -1,5 +1,6 @@
 # Fraud Detection Analysis — Flask Application
-[![CI](https://github.com/FORMATION-AI/fraud_detection_analysis/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/FORMATION-AI/fraud_detection_analysis/actions/workflows/ci.yml)
+[![CI](https://github.com/FORMATION-AI/fraud_detection_analysis/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/FORMATION-AI/fraud_detection_analysis/actions/workflows/ci.yml)
+![Python](https://img.shields.io/badge/python-3.11-blue.svg)
 
 End‑to‑end machine learning system that ingests digital banking transactions, engineers features, trains a fraud classifier, and exposes predictions through a Flask web UI (plus a Streamlit dashboard for interactive demos). This README explains how the project is structured, how to regenerate the ML artifacts, and how to run the web experience locally.
 
