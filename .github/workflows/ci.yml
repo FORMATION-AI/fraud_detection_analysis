@@ -3,7 +3,8 @@
 on:
   push:
     branches:
-      - feature/streamlit-cleanup
+      - master
+      - feature/**
   pull_request:
     branches:
       - master

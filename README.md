@@ -1,5 +1,6 @@
 # Fraud Detection Analysis — Flask Application
-[![CI](https://github.com/FORMATION-AI/fraud_detection_analysis/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/FORMATION-AI/fraud_detection_analysis/actions/workflows/ci.yml)
+[![CI](https://github.com/FORMATION-AI/fraud_detection_analysis/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/FORMATION-AI/fraud_detection_analysis/actions/workflows/ci.yml)
+![Python](https://img.shields.io/badge/python-3.11-blue.svg)
 
 End‑to‑end machine learning system that ingests digital banking transactions, engineers features, trains a fraud classifier, and exposes predictions through a Flask web UI (plus a Streamlit dashboard for interactive demos). This README explains how the project is structured, how to regenerate the ML artifacts, and how to run the web experience locally.
 
@@ -191,6 +192,30 @@ Streamlit will open at `http://localhost:8501`; enter values in the form to see 
 | Need to inspect logs | `logs/<timestamp>/<timestamp>.log` created automatically |
 
 ---
+
+
+## Face Enrollment Prototype (ArcFace)
+
+Notebook: `notebooks/01_face_enrollment_prototype.ipynb`
+
+Prereqs (once per env):
+```powershell
+%pip install -q insightface onnxruntime opencv-python numpy pandas pydantic matplotlib pyarrow
+```
+
+Data layout:
+```
+fraud_detection_analysis/
+  data/
+    enrollment_samples/
+      user_123/
+        img1.jpg
+        img2.jpg
+```
+
+Run the notebook end-to-end on CPU. It enforces: exactly 1 face, min bbox width, min det score, and quality thresholds (blur, brightness, face area ratio). It writes artifacts to `artifacts/face_enrollment/` (JSON + parquet) and prints similarity thresholds (`T_low`, `T_high`) based on genuine vs impostor distributions.
+
+pgvector schema migration: `infra/db/migrations/20260206_face_templates.sql`
 
 ## Roadmap / Next Steps
 - Persist predictions & explanations to a database for audit
