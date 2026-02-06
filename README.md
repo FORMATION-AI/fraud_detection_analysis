@@ -192,6 +192,30 @@ Streamlit will open at `http://localhost:8501`; enter values in the form to see 
 
 ---
 
+
+## Face Enrollment Prototype (ArcFace)
+
+Notebook: `notebooks/01_face_enrollment_prototype.ipynb`
+
+Prereqs (once per env):
+```powershell
+%pip install -q insightface onnxruntime opencv-python numpy pandas pydantic matplotlib pyarrow
+```
+
+Data layout:
+```
+fraud_detection_analysis/
+  data/
+    enrollment_samples/
+      user_123/
+        img1.jpg
+        img2.jpg
+```
+
+Run the notebook end-to-end on CPU. It enforces: exactly 1 face, min bbox width, min det score, and quality thresholds (blur, brightness, face area ratio). It writes artifacts to `artifacts/face_enrollment/` (JSON + parquet) and prints similarity thresholds (`T_low`, `T_high`) based on genuine vs impostor distributions.
+
+pgvector schema migration: `infra/db/migrations/20260206_face_templates.sql`
+
 ## Roadmap / Next Steps
 - Persist predictions & explanations to a database for audit
 - Extend the pipeline with alternative models (LightGBM, CatBoost)
