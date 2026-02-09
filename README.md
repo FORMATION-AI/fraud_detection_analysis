@@ -216,6 +216,7 @@ fraud_detection_analysis/
 Run the notebook end-to-end on CPU. It enforces: exactly 1 face, min bbox width, min det score, and quality thresholds (blur, brightness, face area ratio). It writes artifacts to `artifacts/face_enrollment/` (JSON + parquet) and prints similarity thresholds (`T_low`, `T_high`) based on genuine vs impostor distributions.
 
 pgvector schema migration: `infra/db/migrations/20260206_face_templates.sql`
+Note: `/face/verify` uses the local artifact loader by default (`artifacts/face_enrollment/enrollment_<user_id>.json`). DB loading via `DATABASE_URL` is optional.
 
 ## Roadmap / Next Steps
 - Persist predictions & explanations to a database for audit
